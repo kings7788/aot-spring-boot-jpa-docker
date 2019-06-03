@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Insert title here</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/aot/css/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+    <!-- Custom fonts for this template -->
+	<link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet"/>
+	<link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet"/>
+	<!-- Custom styles for this template -->
+    <link href="/aot/css/one-page-wonder.min.css" rel="stylesheet"/>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Start Bootstrap</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+
+  <header class="masthead text-center text-white">
+    <div class="masthead-content">
+      <div class="container">
+        <div class="row">
+         <div class="col-xl-9 mx-auto">
+          <h1 class="mb-5">電獺 Java Web 工程師 , 歡迎註冊</h1>
+          <h5 class="mb-5">~~~~~~~~~~~~~~~~~~~~~~~~~</h5>
+        </div>
+         <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+          <form id="aotForm" enctype="multipart/form-data">
+            <div class="form-row">
+              <div class="col-12 col-md-9 mb-2 mb-md-0">
+                <input type="text" name="username" class="form-control form-control-lg" placeholder="Enter your username..."/>
+              </div>
+              <div class="col-12 col-md-3">
+                <a id="send" class="btn btn-block btn-lg btn-primary">Sign up!</a>
+              </div>
+            </div>
+          </form>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-circle-1 bg-circle"></div>
+    <div class="bg-circle-2 bg-circle"></div>
+    <div class="bg-circle-3 bg-circle"></div>
+    <div class="bg-circle-4 bg-circle"></div>
+  </header>
+  
+   
+  
+    <!-- Page Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+         
+        </div>
+      </div>
+    </div>
+  <!-- Footer -->
+  <footer class="py-5 bg-black">
+    <div class="container">
+      <p class="m-0 text-center text-white small">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+  <!-- Bootstrap core JavaScript -->
+<script src="/aot/js/plugin/jquery/jquery.min.js"></script>
+<script src="/aot/js/plugin/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="/aot/js/plugin/jquery/jquery-3.3.1.min.js"></script>
+<script src="/aot/js/plugin/jquery/jquery-ui.js"></script>
+<script th:inline="javascript">
+/*<![CDATA[*/
+$(document).ready(function(){
+	
+	$('#send').click(function(){
+// 		e.preventDefault();
+		var username = $('input[name="username"]').val();
+		if(username == ''){
+			alert('請輸入您的username');
+			return false;
+		}
+		
+		var formData = new FormData($('#aotForm')[0]);
+		
+		$.ajax({
+			type : 'POST',
+			url : '/aot/api/user',
+			data : formData,
+			cache : false,
+			contentType : false,
+			processData : false,
+			success : function(data){
+				alert(data);
+			},
+			error : function(jqXHR, textStatus, errorThrown){
+				consol.log('ERRORS: ',errorThrown);
+			}
+			
+		})
+		
+	})
+	
+	
+	
+	
+});
+	
+/*]]>*/
+</script>
+</body>
+</html>
