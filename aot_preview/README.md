@@ -38,14 +38,15 @@
  5.此時輸入docker images 應該會看到一個 spring-jpa-app 的映像
 
 
- 6. 接著輸入
+ 6.接著輸入
 
 
 
        docker run -t --name spring-jpa-app-container --link mysql-docker-container:mysql -p 8087:8080 spring-jpa-app
 
 
- 7. spring-boot的container 會走起來 可在瀏覽器輸入url做測試
+
+ 7.spring-boot的container 會走起來 可在瀏覽器輸入url做測試
 
 
        
