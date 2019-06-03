@@ -30,6 +30,7 @@
  4.確認jar 包 bulid success 之後,在專案的根目錄下輸入
 
 
+
        docker build -f Dockerfile -t spring-jpa-app .
 
 
@@ -40,10 +41,12 @@
  6. 接著輸入
 
 
+
        docker run -t --name spring-jpa-app-container --link mysql-docker-container:mysql -p 8087:8080 spring-jpa-app
 
 
  7. spring-boot的container 會走起來 可在瀏覽器輸入url做測試
+
 
        
        localhost:8087/aot/index
