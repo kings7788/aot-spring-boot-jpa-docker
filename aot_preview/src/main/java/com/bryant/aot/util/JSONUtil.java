@@ -27,7 +27,7 @@ public class JSONUtil {
 	 * @param fromMap
 	 * @param toClaas
 	 * @return
-	 * @throws Exception
+	 * @throws Exception  
 	 */
 	public static <T> T convertStringToObject(String jsonString, Class<T> toClaas) throws Exception {
 		ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
