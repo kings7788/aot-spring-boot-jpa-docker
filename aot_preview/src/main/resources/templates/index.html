@@ -82,6 +82,10 @@ $(document).ready(function(){
 			return false;
 		}
 		
+		if (check_username_format(username,1) != 1) {
+	     	return false;
+		}
+		
 
 	        var ajaxstr = "username="+username;
 		$.ajax({
@@ -101,6 +105,51 @@ $(document).ready(function(){
 		})
 		
 	})
+	
+	//格式檢查
+    function check_username_format(objvalue,flag){
+	  	var Modes=0,havenum=0,haveeng=0;
+		var ok = 0;
+		for (i=0;i<objvalue.length;i++){  
+			Modes = score_psd_CharMode(objvalue.charCodeAt(i));  
+			if(Modes==1)havenum = 1;
+			if(Modes==2)haveeng = 1;
+			if(Modes==4)haveeng = 1;
+			//只接受六種符號 # . %  [ ] _
+			if(Modes==8){
+				ok = 0;
+				if(objvalue.charCodeAt(i)==35)ok = 1;
+				if(objvalue.charCodeAt(i)==46)ok = 1;
+				if(objvalue.charCodeAt(i)==37)ok = 1;
+				if(objvalue.charCodeAt(i)==91)ok = 1;
+				if(objvalue.charCodeAt(i)==93)ok = 1;
+				if(objvalue.charCodeAt(i)==95)ok = 1;
+				if (ok==0){
+					if(flag)alert('請輸入英文大小寫字母 數字 或 特殊字符  # . %  [ ] _');
+					return -1;
+				}
+			}
+		}
+		if((havenum!=1) || (haveeng!=1)){
+			if(flag){
+				$('input[name="username"]').focus();
+			}
+			return -2;
+		}else if (objvalue.length<3){
+			if(flag){
+				$('input[name="username"]').focus();
+				alert('長度應超過3個字');
+			}
+			return -3;
+		}else if (objvalue.length>24){
+			if(flag){
+				$('input[name="username"]').focus();
+				alert('長度不超過24個字');
+			}
+			return -3;
+		}		
+	  	return 1;
+	  }	
 	
 	
 	
