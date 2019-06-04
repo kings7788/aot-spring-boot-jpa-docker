@@ -130,18 +130,20 @@ $(document).ready(function(){
 				}
 			}
 		}
-		if((havenum!=1) || (haveeng!=1)){
+/* 		if((havenum!=1) || (haveeng!=1)){
 			if(flag){
 				$('input[name="username"]').focus();
 			}
 			return -2;
-		}else if (objvalue.length<3){
+		}else
+		if (objvalue.length<3){
 			if(flag){
 				$('input[name="username"]').focus();
 				alert('長度應超過3個字');
 			}
 			return -3;
-		}else if (objvalue.length>24){
+		}else  */
+		if (objvalue.length>24){
 			if(flag){
 				$('input[name="username"]').focus();
 				alert('長度不超過24個字');
