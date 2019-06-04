@@ -26,7 +26,7 @@
 
   > github : [https://github.com/kings7788/aot-spring-boot-jpa-docker.git](https://github.com/kings7788/aot-spring-boot-jpa-docker.git)
 
-  1.先把專案pull到任意資料夾  
+  1.先把專案clone到本地端任意資料夾  
   2.在terminal下docker指令 先執行一個mysql的container
 
   ```
