@@ -87,8 +87,9 @@ $(document).ready(function(){
 		}
 		
 
-	        var ajaxstr = "username="+username;
-		$.ajax({
+	    var ajaxstr = "username="+username;
+		
+	    $.ajax({
 			type : 'POST',
 			url : '/aot/api/user',
 			data : ajaxstr,
@@ -106,6 +107,17 @@ $(document).ready(function(){
 		
 	})
 	
+	
+	//檢查是否為英文大小寫或數字
+	 function score_psd_CharMode(iN){  
+	   	if (iN>=48 && iN <=57) //數字  
+	   	return 1;  
+	   	if (iN>=65 && iN <=90) //英文大寫  
+	   	return 2;  
+	   	if (iN>=97 && iN <=122) //英文小寫  
+	   	return 4;  
+	   	else  return 8;  
+     }
 	//格式檢查
     function check_username_format(objvalue,flag){
 	  	var Modes=0,havenum=0,haveeng=0;
