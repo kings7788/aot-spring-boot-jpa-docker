@@ -1,28 +1,46 @@
 不重複username 註冊申請機制 -bryant
 ===============
 
+* 環境需求(java 8 , docker , maven )
+* 建議系統(ubuntu, mac os ,cent os)
+	
+	1.需安裝 docker  check versions. 可參考
+	>https://docs.docker.com/
+	
+	     $ docker --version
+		  Docker version 18.09, build c97c6d6
+		  
+	2.需安裝 maven  check versions. 可參考
+	>http://maven.apache.org/install.html	
+	
+	     $ mvn -v
+
 * 安裝方式
 
->aot-spring-boot-jpa-docker 
->github : https://github.com/kings7788/aot-spring-boot-jpa-docker.git
+	專案名稱：aot-spring-boot-jpa-docker 
+	>github : https://github.com/kings7788/aot-spring-boot-jpa-docker.git
 
  1.先把專案pull到任意資料夾
- 2.在linux 環境下docker指令 先執行一個mysql的container
-
-      docker run -d \
-      -p 2012:3306 \
-     --name mysql-docker-container \
-     -e MYSQL_ROOT_PASSWORD=root123 \
-     -e MYSQL_DATABASE=spring_app_db \
-     -e MYSQL_USER=app_user \
-     -e MYSQL_PASSWORD=test123 \
-        mysql:latest
+ 2.在terminal下docker指令 先執行一個mysql的container
 
 
- 3.在專案的根目錄 輸入  
+
+	      docker run -d \
+	      -p 2012:3306 \
+	     --name mysql-docker-container \
+	     -e MYSQL_ROOT_PASSWORD=root123 \
+	     -e MYSQL_DATABASE=spring_app_db \
+	     -e MYSQL_USER=app_user \
+	     -e MYSQL_PASSWORD=test123 \
+	        mysql:latest
+
+
+ 3.在專案的根目錄輸入 
+ >ex.adminde-Mac-mini:aot_preview root# mvn clean install -DskipTests
 
 	
-       mvn clean install -DskipTests
+       
+        $ mvn clean install -DskipTests
 
    
   
@@ -31,7 +49,8 @@
 
 
 
-       docker build -f Dockerfile -t spring-jpa-app .
+      
+      	$ docker build -f Dockerfile -t spring-jpa-app .
 
 
 
@@ -42,7 +61,8 @@
 
 
 
-       docker run -t --name spring-jpa-app-container --link mysql-docker-container:mysql -p 8087:8080 spring-jpa-app
+
+     	$ docker run -t --name spring-jpa-app-container --link mysql-docker-container:mysql -p 8087:8080 spring-jpa-app
 
 
 
